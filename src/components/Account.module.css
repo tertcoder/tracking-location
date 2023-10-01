@@ -1,0 +1,27 @@
+.account {
+  background: #384b5b;
+  color: #c7e4fc;
+  list-style: none;
+  border-radius: 1rem;
+
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  border: 2px solid #2d4050;
+}
+
+.account:hover {
+  filter: brightness(90%);
+}
+
+.account:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+p {
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+  color: #7b93a7;
+}
