@@ -5,24 +5,32 @@ import Map from "./components/Map";
 import Profile from "./components/Profile";
 import Users from "./components/Users";
 import AddAccount from "./components/AddAccount";
-import { BrowserRouter, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   return (
     <div style={{ position: "relative" }}>
       <BrowserRouter>
         <Routes>
-          <Router path="map" element={<Map />} />
-          <Router path="users" element={<Users />} />
-          <Router path="users/:id" />
-          {isLogged ? (
-            <Router path="profile" element={<Profile />} />
-          ) : (
-            <Router path="addAccount" element={<AddAccount />} />
-          )}
+          <Route path="/" element={<Map />} />
+          {/* <Route path="/" element={<Users />} /> */}
         </Routes>
       </BrowserRouter>
+      <Users />
+      {isLogged ? <Profile /> : <AddAccount />}
+      {/* <BrowserRouter>
+        <Routes>
+          <Route path="map" element={<Map />} />
+          <Route path="users" element={<Users />} />
+          <Route path="users/:id" />
+          {isLogged ? (
+            <Route path="profile" element={<Profile />} />
+          ) : (
+            <Route path="addAccount" element={<AddAccount />} />
+          )}
+        </Routes>
+      </BrowserRouter> */}
     </div>
   );
 }

@@ -9,7 +9,7 @@
   position: fixed;
   bottom: 2rem;
   left: 2rem;
-
+  z-index: 10000;
   padding: 2rem;
 }
 /* .accounts .hide {

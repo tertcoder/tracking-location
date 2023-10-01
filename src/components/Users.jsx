@@ -7,23 +7,23 @@ const accounts = [
     name: "Bon Tertius T.",
     email: "tuyishimirebt12@gmail.com",
     phone: "+25765849761",
-    position: { lat: -3.34, lng: 2.4 },
+    position: { lat: -3.342249, lng: 29.401736 },
   },
   {
     name: "Toussaint I.",
     email: "iradukunda@gmail.com",
     phone: "+25765269871",
-    position: [-3.34, 2.4],
+    position: { lat: -3.3449276, lng: 29.4034562 },
   },
   {
     name: "Liberatrice B.",
     email: "bayizere@gmail.com",
     phone: "+25765826719",
-    position: [-3.34, 2.4],
+    position: { lat: -3.345509, lng: 29.393489 },
   },
 ];
 function Users() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   function handleToggleHide() {
     setIsOpen(is => !is);
