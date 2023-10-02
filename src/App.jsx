@@ -6,31 +6,39 @@ import Profile from "./components/Profile";
 import Users from "./components/Users";
 import AddAccount from "./components/AddAccount";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { FormProvider } from "./contexts/FormContext";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [mapPosition, setMapPosition] = useState([-3.3456, 29.4008]);
+  const [isLogged, setIsLogged] = useState(false);
+
+  // const [searchParams] = useSearchParams();
+  function showUserLocation(userLat, userLng) {
+    // const userLat = searchParams.get("lat");
+    // const userLng = searchParams.get("lng");
+    setMapPosition([userLat, userLng]);
+  }
+
   return (
     <div style={{ position: "relative" }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Map />} />
-          {/* <Route path="/" element={<Users />} /> */}
+          <Route path="/" element={<Map mapPosition={mapPosition} />} />
         </Routes>
       </BrowserRouter>
-      <Users />
-      {isLogged ? <Profile /> : <AddAccount />}
-      {/* <BrowserRouter>
+      {/* <Map /> */}
+      <BrowserRouter>
         <Routes>
-          <Route path="map" element={<Map />} />
-          <Route path="users" element={<Users />} />
-          <Route path="users/:id" />
-          {isLogged ? (
-            <Route path="profile" element={<Profile />} />
-          ) : (
-            <Route path="addAccount" element={<AddAccount />} />
-          )}
+          <Route
+            path=""
+            element={<Users showUserLocation={showUserLocation} />}
+          >
+            <Route path="/:id" element={<Users />} />
+          </Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
+      {/* <Users /> */}
+      {isLogged ? <Profile /> : <AddAccount />}
     </div>
   );
 }

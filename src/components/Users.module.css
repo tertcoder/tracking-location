@@ -1,16 +1,25 @@
 .accounts {
   width: 45rem;
-  height: auto;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  overflow-x: hidden;
   background: #384b5b;
   backdrop-filter: brightness(90%);
   border-radius: 2rem;
   border: 2px solid #2d4050;
-
   position: fixed;
   bottom: 2rem;
   left: 2rem;
   z-index: 10000;
   padding: 2rem;
+}
+.accounts::-webkit-scrollbar {
+  width: 5px;
+  padding: 2rem 0;
+}
+.accounts::-webkit-scrollbar-thumb {
+  background: #64839c;
+  border-radius: 2rem;
 }
 /* .accounts .hide {
   height: 1rem;
@@ -30,6 +39,10 @@
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
+  list-style: none;
+}
+.accounts .accounts__list li:not(:last-of-type) {
+  margin-bottom: 1rem;
 }
 
 /* Toggle Hide Show */

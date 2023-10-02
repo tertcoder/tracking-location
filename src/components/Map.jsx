@@ -2,7 +2,7 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import styles from "./Map.module.css";
 import { useGeolocation } from "../hooks/useGeolocation";
 import { useEffect, useState } from "react";
-import { useURL } from "../hooks/useURL";
+import { useSearchParams } from "react-router-dom";
 // import { useURL } from "../hooks/useURL";
 // import { useEffect, useState } from "react";
 const accounts = [
@@ -10,7 +10,7 @@ const accounts = [
     name: "Bon Tertius T.",
     email: "tuyishimirebt12@gmail.com",
     phone: "+25765849761",
-    position: { lat: -3.342249, lng: 29.401736 },
+    position: { lat: 15.4756, lng: 37.2045 },
   },
   {
     name: "Toussaint I.",
@@ -22,20 +22,16 @@ const accounts = [
     name: "Liberatrice B.",
     email: "bayizere@gmail.com",
     phone: "+25765826719",
-    position: { lat: -3.345509, lng: 29.393489 },
+    position: { lat: -3.2658, lng: 29.0569 },
   },
 ];
 
-function Map() {
-  const [mapPosition, setMapPosition] = useState([-3.3456, 29.4008]);
+function Map({ mapPosition }) {
+  // const [mapPosition, setMapPosition] = useState([-3.3456, 29.4008]);
   const { position: geoPosition, error, getPosition } = useGeolocation();
   // const [userLat, userLng] = useURL();
-  // useEffect(
-  //   function () {
-  //     if (userLat && userLng) setMapPosition([userLat, userLng]);
-  //   },
-  //   [userLat, userLng]
-  // );
+  // console.log(userLat, userLng);
+  // const [searchParams] = useSearchParams();
 
   useEffect(
     function () {
@@ -44,8 +40,32 @@ function Map() {
     [geoPosition]
   );
 
+  // useEffect(
+  //   function () {
+  //     if (userLat && userLng) setMapPosition([userLat, userLng]);
+  //   },
+  //   [userLat, userLng]
+  // );
+
+  // function showUserLocation() {
+  //   const userLat = searchParams.get("lat");
+  //   const userLng = searchParams.get("lng");
+  //   setMapPosition([userLat, userLng]);
+  // }
+
   return (
     <div className={styles.map}>
+      <button
+        style={{
+          position: "absolute",
+          zIndex: "10000",
+          right: "2rem",
+          bottom: "2rem",
+        }}
+        onClick={getPosition}
+      >
+        Locate
+      </button>
       <MapContainer
         center={mapPosition}
         zoom={14}
@@ -74,7 +94,9 @@ function Map() {
 
 function ChangePosition({ pos }) {
   const map = useMap();
-  map.setView(pos);
+  map.setView(pos, map.getZoom(), {
+    animate: true,
+  });
   return null;
 }
 

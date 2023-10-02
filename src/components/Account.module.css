@@ -1,7 +1,12 @@
-.account {
+.account,
+.account:link,
+.account:visited {
+  display: flex;
+  flex-direction: column;
   background: #384b5b;
   color: #c7e4fc;
   list-style: none;
+  text-decoration: none;
   border-radius: 1rem;
 
   padding: 1.5rem 2rem;
@@ -13,9 +18,6 @@
   filter: brightness(90%);
 }
 
-.account:not(:last-of-type) {
-  margin-bottom: 1rem;
-}
 h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
