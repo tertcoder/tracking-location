@@ -1,11 +1,11 @@
 // import Accounts from "./components/Accounts";
 import { React } from "react";
-import Nav from "./components/Nav";
+import Map from "./components/Map";
 
 function App() {
   return (
     <div>
-      <Nav />
+      <Map />
     </div>
   );
 }
